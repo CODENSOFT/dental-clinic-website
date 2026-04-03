@@ -1095,9 +1095,8 @@ export default function Home() {
       {/* Secțiunea Echipa Noastră */}
       <section id="echipa" className="py-24 bg-gradient-to-b from-slate-50 via-white to-blue-50/30">
         <div className="max-w-7xl mx-auto px-6 lg:px-8">
-          {/* Zona de Sus: Titlu + Descriere + Buton */}
-          <div className="grid lg:grid-cols-2 gap-8 items-start mb-16">
-            {/* Left side - Text content */}
+          {/* Zona de Sus: Titlu + Descriere + Buton (buton centrat pe toate ecranele) */}
+          <div className="mb-16">
             <div>
               <p className="text-sm font-semibold text-blue-600 mb-4 uppercase tracking-wider"># Echipa Noastră</p>
               {/* Titlu - Bold, potrivit stilului site-ului */}
@@ -1110,12 +1109,10 @@ export default function Home() {
                 Echipa noastră dedicată de profesioniști combină ani de experiență, tehnologie de ultimă generație și o atmosferă caldă și îngrijitoare pentru a vă asigura cea mai bună îngrijire dentară posibilă.
               </p>
             </div>
-            
-            {/* Partea dreaptă - Buton aliniat cu titlul */}
-            <div className="flex items-start justify-end lg:justify-end">
+            <div className="flex justify-center w-full mt-10 sm:mt-12">
               <button 
                 onClick={() => document.getElementById('programare')?.scrollIntoView({ behavior: 'smooth' })}
-                className="bg-gradient-to-r from-blue-600 via-blue-600 to-blue-700 text-white px-10 py-4 rounded-[50px] text-lg font-bold hover:from-blue-700 hover:via-blue-700 hover:to-blue-800 transition-all duration-300 inline-flex items-center space-x-2 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-xl hover:shadow-2xl transform hover:scale-105 mt-12 lg:mt-[52px]"
+                className="bg-gradient-to-r from-blue-600 via-blue-600 to-blue-700 text-white px-10 py-4 rounded-[50px] text-lg font-bold hover:from-blue-700 hover:via-blue-700 hover:to-blue-800 transition-all duration-300 inline-flex items-center space-x-2 focus:outline-none focus:ring-4 focus:ring-blue-300 shadow-xl hover:shadow-2xl transform hover:scale-105"
               >
                 <span>Programează-te Astăzi</span>
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

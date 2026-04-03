@@ -141,29 +141,29 @@ function ClientAvailability({ selectedDate, selectedMedic, onSelectSlot, onSlots
   }, [selectedDate, selectedMedic]);
 
   return (
-    <div className="space-y-4 sm:space-y-6 md:space-y-8">
-      <div>
-        <label className="flex items-center text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-3">
-          <svg className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div className="space-y-4 sm:space-y-6 md:space-y-8 min-w-0 w-full">
+      <div className="min-w-0">
+        <label className="flex items-start gap-2 text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-3">
+          <svg className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
           </svg>
-          <span className="whitespace-nowrap">Selectează Data</span>
+          <span className="min-w-0 break-words leading-snug">Selectează Data</span>
         </label>
         <input
           type="date"
           value={selectedDate}
           onChange={(e) => onSelectSlot(e.target.value, "")}
           min={todayISO()}
-          className="w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-sm sm:text-base md:text-lg"
+          className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-6 py-3 sm:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-base md:text-lg"
         />
       </div>
 
-      <div>
-        <label className="flex items-center text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-3">
-          <svg className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="min-w-0">
+        <label className="flex items-start gap-2 text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-3">
+          <svg className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
           </svg>
-          <span className="whitespace-nowrap">Selectează Medicul</span>
+          <span className="min-w-0 break-words leading-snug">Selectează Medicul</span>
         </label>
         <select
           value={selectedMedic}
@@ -172,7 +172,7 @@ function ClientAvailability({ selectedDate, selectedMedic, onSelectSlot, onSlots
             onMedicChange(newMedic);
             onSelectSlot(selectedDate, "");
           }}
-          className="w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-4 sm:px-6 py-3 sm:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 appearance-none cursor-pointer text-sm sm:text-base md:text-lg font-medium"
+          className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-6 py-3 sm:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 appearance-none cursor-pointer text-sm sm:text-base md:text-lg font-medium"
         >
           {medici.map((medic) => (
             <option key={medic.id} value={medic.id}>
@@ -182,15 +182,15 @@ function ClientAvailability({ selectedDate, selectedMedic, onSelectSlot, onSlots
         </select>
       </div>
 
-      <div>
-        <label className="flex items-center text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-3">
-          <svg className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="min-w-0">
+        <label className="flex items-start gap-2 text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-3">
+          <svg className="w-4 h-4 sm:w-5 sm:h-5 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <span className="whitespace-nowrap">Ore Disponibile</span>
+          <span className="min-w-0 break-words leading-snug">Ore Disponibile</span>
         </label>
         {/* Mobile: Dropdown selector */}
-        <div className="sm:hidden">
+        <div className="sm:hidden min-w-0">
           {loading ? (
             <div className="flex items-center justify-center py-8">
               <div className="relative">
@@ -214,7 +214,7 @@ function ClientAvailability({ selectedDate, selectedMedic, onSelectSlot, onSlots
             <select
               value=""
               onChange={(e) => onSelectSlot(selectedDate, e.target.value)}
-              className="w-full border-2 border-gray-200 rounded-xl px-4 py-3 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 appearance-none cursor-pointer text-sm font-medium"
+              className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl px-3 py-3 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 appearance-none cursor-pointer text-sm font-medium"
             >
               <option value="">Selectează ora</option>
               {timeSlots.filter(t => !bookedTimes.includes(t)).map((t) => (
@@ -227,9 +227,9 @@ function ClientAvailability({ selectedDate, selectedMedic, onSelectSlot, onSlots
         </div>
 
         {/* Desktop: Grid buttons */}
-        <div className="hidden sm:grid sm:grid-cols-3 gap-3 md:gap-4 max-h-72 md:max-h-80 overflow-y-auto p-2 sm:p-3 bg-gray-50 rounded-xl sm:rounded-2xl">
+        <div className="hidden sm:grid sm:grid-cols-2 md:grid-cols-3 gap-2.5 sm:gap-3 md:gap-4 max-h-64 sm:max-h-72 md:max-h-80 overflow-y-auto overflow-x-hidden p-2 sm:p-3 bg-gray-50 rounded-xl sm:rounded-2xl min-w-0">
           {loading ? (
-            <div className="col-span-3 flex items-center justify-center py-12 md:py-16">
+            <div className="col-span-full flex items-center justify-center py-12 md:py-16">
               <div className="relative">
                 <div className="animate-spin rounded-full h-12 w-12 border-4 border-blue-200 border-t-blue-600"></div>
                 <div className="absolute inset-0 flex items-center justify-center">
@@ -238,7 +238,7 @@ function ClientAvailability({ selectedDate, selectedMedic, onSelectSlot, onSlots
               </div>
             </div>
           ) : timeSlots.filter(t => !bookedTimes.includes(t)).length === 0 ? (
-            <div className="col-span-3 text-center py-12 md:py-16">
+            <div className="col-span-full text-center py-12 md:py-16">
               <div className="w-20 h-20 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
                 <svg className="w-10 h-10 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -252,7 +252,7 @@ function ClientAvailability({ selectedDate, selectedMedic, onSelectSlot, onSlots
               <button
                 key={t}
                 onClick={() => onSelectSlot(selectedDate, t)}
-                className="rounded-xl sm:rounded-2xl px-4 md:px-5 py-3 md:py-4 text-sm md:text-base font-bold transition-all duration-300 transform hover:scale-110 hover:-translate-y-1 bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 text-white shadow-lg hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-300 border-2 border-transparent hover:border-blue-300"
+                className="rounded-xl sm:rounded-2xl px-3 md:px-5 py-2.5 md:py-4 text-xs sm:text-sm md:text-base font-bold transition-all duration-300 transform hover:scale-[1.02] sm:hover:scale-110 hover:-translate-y-0.5 sm:hover:-translate-y-1 bg-gradient-to-br from-blue-600 via-blue-600 to-blue-700 text-white shadow-lg hover:shadow-2xl focus:outline-none focus:ring-4 focus:ring-blue-300 border-2 border-transparent hover:border-blue-300 min-w-0"
               >
                 {t}
               </button>
@@ -340,65 +340,65 @@ function ReservationForm({ selectedDate, onChangeDate, prefillTime, freeSlots }:
 
   if (submitted) {
     return (
-      <div className="bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 border-2 border-emerald-200 rounded-3xl p-12 text-center shadow-2xl">
-        <div className="w-24 h-24 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-8 shadow-xl animate-pulse">
-          <svg className="w-14 h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="bg-gradient-to-br from-emerald-50 via-green-50 to-teal-50 border-2 border-emerald-200 rounded-2xl sm:rounded-3xl p-6 sm:p-10 md:p-12 text-center shadow-2xl min-w-0">
+        <div className="w-16 h-16 sm:w-24 sm:h-24 bg-gradient-to-br from-emerald-500 to-green-600 rounded-full flex items-center justify-center mx-auto mb-5 sm:mb-8 shadow-xl animate-pulse">
+          <svg className="w-9 h-9 sm:w-14 sm:h-14 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="3" d="M5 13l4 4L19 7" />
           </svg>
         </div>
-        <h3 className="text-4xl font-extrabold text-black mb-4">Mulțumim!</h3>
-        <p className="text-xl text-gray-700 font-medium mb-2">Rezervarea ta a fost trimisă cu succes!</p>
-        <p className="text-base text-gray-600">Vei primi un email de confirmare în scurt timp.</p>
+        <h3 className="text-2xl sm:text-3xl md:text-4xl font-extrabold text-black mb-3 sm:mb-4">Mulțumim!</h3>
+        <p className="text-base sm:text-lg md:text-xl text-gray-700 font-medium mb-2">Rezervarea ta a fost trimisă cu succes!</p>
+        <p className="text-sm sm:text-base text-gray-600">Vei primi un email de confirmare în scurt timp.</p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 md:space-y-6 px-1 sm:px-0">
+    <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-5 md:space-y-6 w-full min-w-0">
       {/* Mobile: Single column, Desktop: Two columns */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-4 md:gap-5">
-        <div className="w-full">
-          <label className="flex items-center justify-center sm:justify-start text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-2.5 md:mb-3">
-            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 mr-1.5 sm:mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-4 md:gap-5 min-w-0">
+        <div className="w-full min-w-0">
+          <label className="flex items-start gap-2 text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-2.5 md:mb-3">
+            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
             </svg>
-            <span className="whitespace-nowrap text-center sm:text-left">Nume Complet *</span>
+            <span className="min-w-0 break-words leading-snug">Nume Complet *</span>
           </label>
       <input
             type="text"
         value={form.nume}
         onChange={(e) => setForm({ ...form, nume: e.target.value })}
         required
-            className="w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-4 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-sm sm:text-base md:text-lg text-center sm:text-left"
+            className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-base sm:text-base md:text-lg text-left"
             placeholder="Nume complet"
           />
         </div>
-        <div className="w-full">
-          <label className="flex items-center justify-center sm:justify-start text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-2.5 md:mb-3">
-            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 mr-1.5 sm:mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="w-full min-w-0">
+          <label className="flex items-start gap-2 text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-2.5 md:mb-3">
+            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
             </svg>
-            <span className="whitespace-nowrap text-center sm:text-left">Email *</span>
+            <span className="min-w-0 break-words leading-snug">Email *</span>
           </label>
       <input
         type="email"
         value={form.email}
         onChange={(e) => setForm({ ...form, email: e.target.value })}
             required
-            className="w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-4 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-sm sm:text-base md:text-lg text-center sm:text-left"
+            className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-base sm:text-base md:text-lg text-left"
             placeholder="Email"
           />
         </div>
       </div>
 
       {/* Mobile: Single column, Desktop: Two columns */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-4 md:gap-5">
-        <div className="w-full">
-          <label className="flex items-center justify-center sm:justify-start text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-2.5 md:mb-3">
-            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 mr-1.5 sm:mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-4 md:gap-5 min-w-0">
+        <div className="w-full min-w-0">
+          <label className="flex items-start gap-2 text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-2.5 md:mb-3">
+            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
             </svg>
-            <span className="whitespace-nowrap text-center sm:text-left">Data Programării *</span>
+            <span className="min-w-0 break-words leading-snug">Data Programării *</span>
           </label>
       <input
         type="date"
@@ -409,21 +409,21 @@ function ReservationForm({ selectedDate, onChangeDate, prefillTime, freeSlots }:
             }}
         required
             min={todayISO()}
-            className="w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-4 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-sm sm:text-base md:text-lg text-center sm:text-left"
+            className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-base sm:text-base md:text-lg text-left"
           />
         </div>
-        <div className="w-full">
-          <label className="flex items-center justify-center sm:justify-start text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-2.5 md:mb-3">
-            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 mr-1.5 sm:mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div className="w-full min-w-0">
+          <label className="flex items-start gap-2 text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-2.5 md:mb-3">
+            <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
             </svg>
-            <span className="whitespace-nowrap text-center sm:text-left">Ora Programării *</span>
+            <span className="min-w-0 break-words leading-snug">Ora Programării *</span>
           </label>
           <select
         value={form.ora}
         onChange={(e) => setForm({ ...form, ora: e.target.value })}
         required
-            className="w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-4 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 appearance-none cursor-pointer text-sm sm:text-base md:text-lg font-medium text-center sm:text-left"
+            className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 appearance-none cursor-pointer text-sm sm:text-base md:text-lg font-medium text-left"
           >
             <option value="">Selectează ora</option>
             {freeSlots.map((t) => (
@@ -435,33 +435,33 @@ function ReservationForm({ selectedDate, onChangeDate, prefillTime, freeSlots }:
         </div>
       </div>
 
-      <div className="w-full">
-        <label className="flex items-center justify-center sm:justify-start text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-2.5 md:mb-3">
-          <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 mr-1.5 sm:mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="w-full min-w-0">
+        <label className="flex items-start gap-2 text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-2.5 md:mb-3">
+          <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
           </svg>
-          <span className="whitespace-nowrap text-center sm:text-left">Număr Telefon *</span>
+          <span className="min-w-0 break-words leading-snug">Număr Telefon *</span>
         </label>
         <input
           type="tel"
           value={form.telefon}
           onChange={(e) => setForm({ ...form, telefon: e.target.value })}
           required
-          className="w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-4 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-sm sm:text-base md:text-lg text-center sm:text-left"
+          className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-base sm:text-base md:text-lg text-left"
           placeholder="Număr telefon"
         />
       </div>
 
-      <div className="w-full">
-        <label className="flex items-center justify-center sm:justify-start text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-2.5 md:mb-3">
-          <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 mr-1.5 sm:mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+      <div className="w-full min-w-0">
+        <label className="flex items-start gap-2 text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-2.5 md:mb-3">
+          <svg className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
           </svg>
-          <span className="whitespace-nowrap text-center sm:text-left">Note Adiționale</span>
+          <span className="min-w-0 break-words leading-snug">Note Adiționale</span>
         </label>
         <textarea
           rows={3}
-          className="w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-4 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 resize-none text-sm sm:text-base md:text-lg text-center sm:text-left"
+          className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 resize-y min-h-[5rem] text-base sm:text-base md:text-lg text-left"
           placeholder="Note adiționale (opțional)"
         />
       </div>
@@ -1369,27 +1369,27 @@ export default function Home() {
       </section>
 
       {/* Secțiunea Rezervare Programare */}
-      <section id="programare" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-8 sm:mb-12 md:mb-16">
+      <section id="programare" className="py-12 sm:py-16 md:py-20 lg:py-24 bg-gray-50 overflow-x-hidden">
+        <div className="max-w-7xl mx-auto px-3 sm:px-6 lg:px-8">
+          <div className="text-center mb-8 sm:mb-12 md:mb-16 px-1">
             <p className="text-xs sm:text-sm font-semibold text-blue-600 mb-2 sm:mb-4"># Programare</p>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-2 sm:mb-4">Rezervare programare ușoară și rapidă</h2>
+            <h2 className="text-xl sm:text-3xl md:text-4xl font-bold text-black mb-2 sm:mb-4 leading-tight">Rezervare programare ușoară și rapidă</h2>
           </div>
 
-          <div className="max-w-7xl mx-auto">
-            <div className="bg-gradient-to-br from-white via-blue-50/30 to-cyan-50/30 rounded-2xl sm:rounded-3xl shadow-xl sm:shadow-2xl p-4 sm:p-6 md:p-8 lg:p-12 xl:p-16 border-2 border-blue-100">
-              {/* Mobile: Single column, Desktop: Two columns */}
-              <div className="flex flex-col lg:grid lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-16">
+          <div className="w-full min-w-0">
+            <div className="bg-gradient-to-br from-white via-blue-50/30 to-cyan-50/30 rounded-xl sm:rounded-2xl md:rounded-3xl shadow-xl sm:shadow-2xl p-3 sm:p-6 md:p-8 lg:p-12 xl:p-16 border-2 border-blue-100 min-w-0">
+              {/* Mobile: coloană unică + separator; Desktop: două coloane */}
+              <div className="flex flex-col lg:grid lg:grid-cols-2 gap-6 sm:gap-10 lg:gap-12 xl:gap-16 min-w-0">
                 {/* Left section - Select Date and Time */}
-                <div className="w-full lg:border-r-2 lg:border-blue-200 lg:pr-8 xl:pr-16">
-                  <div className="mb-6 sm:mb-8">
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-black mb-2 sm:mb-3 flex items-center">
-                      <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-blue-600 mr-2 sm:mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-full min-w-0 lg:border-r-2 lg:border-blue-200 lg:pr-6 xl:pr-12 pb-6 sm:pb-8 lg:pb-0 border-b border-blue-100/80 lg:border-b-0">
+                  <div className="mb-5 sm:mb-8">
+                    <h3 className="text-lg sm:text-2xl md:text-3xl font-black text-black mb-2 sm:mb-3 flex items-start gap-2 sm:gap-3">
+                      <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
                       </svg>
-                      <span className="break-words">Selectează Data și Ora</span>
+                      <span className="break-words min-w-0 leading-snug">Selectează Data și Ora</span>
                     </h3>
-                    <p className="text-sm sm:text-base md:text-lg text-gray-600 mt-2">Alege momentul potrivit pentru consultația ta</p>
+                    <p className="text-sm sm:text-base md:text-lg text-gray-600 mt-2 leading-relaxed">Alege momentul potrivit pentru consultația ta</p>
                   </div>
                   <ClientAvailability
                     selectedDate={selectedDate}
@@ -1401,15 +1401,15 @@ export default function Home() {
                 </div>
                 
                 {/* Right section - Complete Details */}
-                <div className="w-full lg:pl-0">
-                  <div className="mb-6 sm:mb-8">
-                    <h3 className="text-xl sm:text-2xl md:text-3xl font-black text-black mb-2 sm:mb-3 flex items-center">
-                      <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-blue-600 mr-2 sm:mr-3 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div className="w-full min-w-0 lg:pl-0">
+                  <div className="mb-5 sm:mb-8">
+                    <h3 className="text-lg sm:text-2xl md:text-3xl font-black text-black mb-2 sm:mb-3 flex items-start gap-2 sm:gap-3">
+                      <svg className="w-6 h-6 sm:w-7 sm:h-7 md:w-8 md:h-8 text-blue-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
                       </svg>
-                      <span className="break-words">Completează Datele</span>
+                      <span className="break-words min-w-0 leading-snug">Completează Datele</span>
                     </h3>
-                    <p className="text-sm sm:text-base md:text-lg text-gray-600 mt-2">Informațiile tale pentru rezervare</p>
+                    <p className="text-sm sm:text-base md:text-lg text-gray-600 mt-2 leading-relaxed">Informațiile tale pentru rezervare</p>
                   </div>
                   <ReservationForm
                     selectedDate={selectedDate}

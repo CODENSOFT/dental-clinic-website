@@ -149,13 +149,13 @@ function ClientAvailability({ selectedDate, selectedMedic, onSelectSlot, onSlots
           </svg>
           <span className="min-w-0 break-words leading-snug">Selectează Data</span>
         </label>
-        <div className="w-full min-w-0 max-w-full">
+        <div className="appointment-date-wrap">
           <input
             type="date"
             value={selectedDate}
             onChange={(e) => onSelectSlot(e.target.value, "")}
             min={todayISO()}
-            className="appointment-field w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-6 py-3 sm:py-3.5 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 md:text-lg touch-manipulation"
+            className="appointment-field min-w-0 flex-1 max-w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-6 py-3 sm:py-3.5 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 md:text-lg touch-manipulation"
           />
         </div>
       </div>
@@ -402,7 +402,7 @@ function ReservationForm({ selectedDate, onChangeDate, prefillTime, freeSlots }:
             </svg>
             <span className="min-w-0 break-words leading-snug">Data Programării *</span>
           </label>
-          <div className="w-full min-w-0 max-w-full">
+          <div className="appointment-date-wrap">
             <input
               type="date"
               value={form.data}
@@ -412,7 +412,7 @@ function ReservationForm({ selectedDate, onChangeDate, prefillTime, freeSlots }:
               }}
               required
               min={todayISO()}
-              className="appointment-field w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 md:text-lg text-left touch-manipulation"
+              className="appointment-field min-w-0 flex-1 max-w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 md:text-lg text-left touch-manipulation"
             />
           </div>
         </div>
@@ -568,7 +568,7 @@ export default function Home() {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-slate-50 via-white to-blue-50/30">
+    <div className="min-h-screen w-full max-w-full overflow-x-clip bg-gradient-to-b from-slate-50 via-white to-blue-50/30">
       {/* Header */}
       <header className="bg-white border-b border-blue-50 sticky top-0 z-50 shadow-sm">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">

@@ -14,6 +14,12 @@
 
 /* Force light theme across the app */
 
+html {
+  overflow-x: clip;
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
+}
+
 html, body, #__next {
   min-height: 100%;
 }
@@ -22,6 +28,15 @@ body {
   color: var(--foreground);
   background: var(--background);
   font-family: Arial, Helvetica, sans-serif;
+  overflow-x: clip;
+  width: 100%;
+  margin: 0;
+}
+
+#__next {
+  overflow-x: clip;
+  width: 100%;
+  max-width: 100%;
 }
 
 /* Secțiunea Programare: câmpuri care nu depășesc lățimea ecranului pe mobil.
@@ -38,7 +53,16 @@ body {
 
 input.appointment-field[type="date"] {
   min-width: 0;
-  display: block;
+  max-width: 100%;
+}
+
+/* Flex: input-ul de dată se poate micșora în lățime fără să iasă din ecran */
+.appointment-date-wrap {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
 }
 
 input.appointment-field[type="date"]::-webkit-datetime-edit,
@@ -48,10 +72,15 @@ input.appointment-field[type="date"]::-webkit-datetime-edit-text {
   padding: 0;
 }
 
+input.appointment-field[type="date"]::-webkit-datetime-edit-fields-wrapper {
+  width: 100%;
+}
+
 input.appointment-field[type="date"]::-webkit-calendar-picker-indicator {
   cursor: pointer;
   opacity: 0.9;
   flex-shrink: 0;
+  margin-inline-start: 0.25rem;
 }
 
 select.appointment-field,

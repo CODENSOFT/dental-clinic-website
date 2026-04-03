@@ -149,13 +149,15 @@ function ClientAvailability({ selectedDate, selectedMedic, onSelectSlot, onSlots
           </svg>
           <span className="min-w-0 break-words leading-snug">Selectează Data</span>
         </label>
-        <input
-          type="date"
-          value={selectedDate}
-          onChange={(e) => onSelectSlot(e.target.value, "")}
-          min={todayISO()}
-          className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-6 py-3 sm:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-base md:text-lg"
-        />
+        <div className="w-full min-w-0 max-w-full">
+          <input
+            type="date"
+            value={selectedDate}
+            onChange={(e) => onSelectSlot(e.target.value, "")}
+            min={todayISO()}
+            className="appointment-field w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-6 py-3 sm:py-3.5 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 md:text-lg touch-manipulation"
+          />
+        </div>
       </div>
 
       <div className="min-w-0">
@@ -172,7 +174,7 @@ function ClientAvailability({ selectedDate, selectedMedic, onSelectSlot, onSlots
             onMedicChange(newMedic);
             onSelectSlot(selectedDate, "");
           }}
-          className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-6 py-3 sm:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 appearance-none cursor-pointer text-sm sm:text-base md:text-lg font-medium"
+          className="appointment-field w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-6 py-3 sm:py-3.5 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 appearance-none cursor-pointer md:text-lg font-medium touch-manipulation"
         >
           {medici.map((medic) => (
             <option key={medic.id} value={medic.id}>
@@ -214,7 +216,7 @@ function ClientAvailability({ selectedDate, selectedMedic, onSelectSlot, onSlots
             <select
               value=""
               onChange={(e) => onSelectSlot(selectedDate, e.target.value)}
-              className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl px-3 py-3 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 appearance-none cursor-pointer text-sm font-medium"
+              className="appointment-field w-full border-2 border-gray-200 rounded-xl px-3 py-3 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 appearance-none cursor-pointer font-medium touch-manipulation"
             >
               <option value="">Selectează ora</option>
               {timeSlots.filter(t => !bookedTimes.includes(t)).map((t) => (
@@ -369,7 +371,7 @@ function ReservationForm({ selectedDate, onChangeDate, prefillTime, freeSlots }:
         value={form.nume}
         onChange={(e) => setForm({ ...form, nume: e.target.value })}
         required
-            className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-base sm:text-base md:text-lg text-left"
+            className="appointment-field w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 md:text-lg text-left touch-manipulation"
             placeholder="Nume complet"
           />
         </div>
@@ -385,7 +387,7 @@ function ReservationForm({ selectedDate, onChangeDate, prefillTime, freeSlots }:
         value={form.email}
         onChange={(e) => setForm({ ...form, email: e.target.value })}
             required
-            className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-base sm:text-base md:text-lg text-left"
+            className="appointment-field w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 md:text-lg text-left touch-manipulation"
             placeholder="Email"
           />
         </div>
@@ -400,17 +402,19 @@ function ReservationForm({ selectedDate, onChangeDate, prefillTime, freeSlots }:
             </svg>
             <span className="min-w-0 break-words leading-snug">Data Programării *</span>
           </label>
-      <input
-        type="date"
-        value={form.data}
-            onChange={(e) => {
-              setForm({ ...form, data: e.target.value });
-              onChangeDate(e.target.value);
-            }}
-        required
-            min={todayISO()}
-            className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-base sm:text-base md:text-lg text-left"
-          />
+          <div className="w-full min-w-0 max-w-full">
+            <input
+              type="date"
+              value={form.data}
+              onChange={(e) => {
+                setForm({ ...form, data: e.target.value });
+                onChangeDate(e.target.value);
+              }}
+              required
+              min={todayISO()}
+              className="appointment-field w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 md:text-lg text-left touch-manipulation"
+            />
+          </div>
         </div>
         <div className="w-full min-w-0">
           <label className="flex items-start gap-2 text-xs sm:text-sm font-bold text-gray-800 mb-2 sm:mb-2.5 md:mb-3">
@@ -423,7 +427,7 @@ function ReservationForm({ selectedDate, onChangeDate, prefillTime, freeSlots }:
         value={form.ora}
         onChange={(e) => setForm({ ...form, ora: e.target.value })}
         required
-            className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 appearance-none cursor-pointer text-sm sm:text-base md:text-lg font-medium text-left"
+            className="appointment-field w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 appearance-none cursor-pointer md:text-lg font-medium text-left touch-manipulation"
           >
             <option value="">Selectează ora</option>
             {freeSlots.map((t) => (
@@ -447,7 +451,7 @@ function ReservationForm({ selectedDate, onChangeDate, prefillTime, freeSlots }:
           value={form.telefon}
           onChange={(e) => setForm({ ...form, telefon: e.target.value })}
           required
-          className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 text-base sm:text-base md:text-lg text-left"
+          className="appointment-field w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 md:text-lg text-left touch-manipulation"
           placeholder="Număr telefon"
         />
       </div>
@@ -461,7 +465,7 @@ function ReservationForm({ selectedDate, onChangeDate, prefillTime, freeSlots }:
         </label>
         <textarea
           rows={3}
-          className="w-full max-w-full min-w-0 box-border border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 resize-y min-h-[5rem] text-base sm:text-base md:text-lg text-left"
+          className="appointment-field w-full border-2 border-gray-200 rounded-xl sm:rounded-2xl px-3 sm:px-4 md:px-6 py-3 sm:py-3 md:py-4 text-gray-900 bg-white shadow-md hover:border-blue-400 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all duration-300 resize-y min-h-[5rem] md:text-lg text-left touch-manipulation"
           placeholder="Note adiționale (opțional)"
         />
       </div>
@@ -469,7 +473,7 @@ function ReservationForm({ selectedDate, onChangeDate, prefillTime, freeSlots }:
       <button
         type="submit"
         disabled={submitting}
-        className="w-full bg-gradient-to-r from-blue-600 via-blue-600 to-blue-700 text-white font-bold py-3 sm:py-4 md:py-5 px-4 sm:px-6 md:px-8 rounded-xl sm:rounded-2xl hover:from-blue-700 hover:via-blue-700 hover:to-blue-800 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 sm:focus:ring-4 focus:ring-blue-300 shadow-lg sm:shadow-xl hover:shadow-xl sm:hover:shadow-2xl transform hover:scale-[1.01] sm:hover:scale-[1.02] text-sm sm:text-base md:text-lg"
+        className="w-full min-w-0 max-w-full box-border bg-gradient-to-r from-blue-600 via-blue-600 to-blue-700 text-white font-bold py-3 sm:py-4 md:py-5 px-4 sm:px-6 md:px-8 rounded-xl sm:rounded-2xl hover:from-blue-700 hover:via-blue-700 hover:to-blue-800 transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed focus:outline-none focus:ring-2 sm:focus:ring-4 focus:ring-blue-300 shadow-lg sm:shadow-xl hover:shadow-xl sm:hover:shadow-2xl transform hover:scale-[1.01] sm:hover:scale-[1.02] text-sm sm:text-base md:text-lg touch-manipulation"
       >
         {submitting ? (
           <span className="flex items-center justify-center">

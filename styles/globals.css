@@ -24,3 +24,38 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
+/* Secțiunea Programare: câmpuri care nu depășesc lățimea ecranului pe mobil.
+   Native date are părți interne WebKit cu min-width care rupe layout-ul. */
+.appointment-field {
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  font-size: 1rem;
+  line-height: 1.5;
+  -webkit-tap-highlight-color: transparent;
+}
+
+input.appointment-field[type="date"] {
+  min-width: 0;
+  display: block;
+}
+
+input.appointment-field[type="date"]::-webkit-datetime-edit,
+input.appointment-field[type="date"]::-webkit-datetime-edit-fields-wrapper,
+input.appointment-field[type="date"]::-webkit-datetime-edit-text {
+  min-width: 0;
+  padding: 0;
+}
+
+input.appointment-field[type="date"]::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: 0.9;
+  flex-shrink: 0;
+}
+
+select.appointment-field,
+textarea.appointment-field {
+  font-size: 1rem;
+}
+
